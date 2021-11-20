@@ -83,11 +83,6 @@ class SingleRoleButton(discord.ui.Button):
         """Updates the original interaction message with a new view object with the updated buttons."""
         self.style = self.REMOVE_STYLE if self.assigned else self.ADD_STYLE
         self.label = self.LABEL_FORMAT.format(action="Remove" if self.assigned else "Add", role_name=self.role.name)
-        view_list = [
-            self if button.custom_id == self.custom_id else button
-            for button in self.view.children
-        ]
-        self.view.children = view_list
         try:
             await interaction.message.edit(view=self.view)
         except discord.NotFound:
