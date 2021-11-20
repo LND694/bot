@@ -98,7 +98,7 @@ class Subscribe(commands.Cog):
         self.bot = bot
         self.init_task = scheduling.create_task(self.init_cog(), event_loop=self.bot.loop)
         self.assignable_roles: list[discord.Role] = []
-        self.guild = discord.Guild = None
+        self.guild: discord.Guild = None
 
     async def init_cog(self) -> None:
         """Initialise the cog by resolving the role IDs in ASSIGNABLE_ROLES to role names."""
