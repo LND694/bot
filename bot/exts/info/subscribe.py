@@ -15,8 +15,8 @@ from bot.utils import checks, members, scheduling
 ASSIGNABLE_ROLES = (
     (constants.Roles.announcements, None),
     (constants.Roles.pyweek_announcements, None),
-    (constants.Roles.advent_of_code, 12),
     (constants.Roles.lovefest, 2),
+    (constants.Roles.advent_of_code, 12),
 )
 ITEMS_PER_ROW = 3
 
