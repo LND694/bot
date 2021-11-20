@@ -287,8 +287,8 @@ class HelpChannels(commands.Cog):
         await self.bot.wait_until_guild_available()
 
         log.trace("Initialising the cog.")
-        guild = self.bot.get_guild(constants.Guild.id)
-        self.cooldown_role = guild.get_role(constants.Roles.help_cooldown)
+        self.guild = self.bot.get_guild(constants.Guild.id)
+        self.cooldown_role = self.guild.get_role(constants.Roles.help_cooldown)
 
         await self.init_categories()
 
@@ -433,7 +433,7 @@ class HelpChannels(commands.Cog):
         await _caches.claimants.delete(channel.id)
         await _caches.session_participants.delete(channel.id)
 
-        claimant = await members.get_or_fetch_member(self.bot.get_guild(constants.Guild.id), claimant_id)
+        claimant = await members.get_or_fetch_member(self.guild, claimant_id)
         if claimant is None:
             log.info(f"{claimant_id} left the guild during their help session; the cooldown role won't be removed")
         else:
